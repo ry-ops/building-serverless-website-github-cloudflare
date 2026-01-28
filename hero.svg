@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+
+    <linearGradient id="node-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+
+    <linearGradient id="edge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+
+    <radialGradient id="glow-gradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes spread-global {
+      0% { transform: scale(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    @keyframes pulse-node {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    @keyframes wave-flow {
+      0% { d: path('M0,315 Q300,295 600,315 T1200,315'); }
+      50% { d: path('M0,315 Q300,335 600,315 T1200,315'); }
+      100% { d: path('M0,315 Q300,295 600,315 T1200,315'); }
+    }
+
+    @keyframes particle-float {
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translate(600px, -200px); opacity: 0; }
+    }
+
+    @keyframes radiate {
+      0% { transform: scale(1); opacity: 0; }
+      50% { opacity: 0.4; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    .edge-node {
+      animation: pulse-node 4s ease-in-out infinite;
+    }
+
+    .particle {
+      animation: particle-float 10s ease-in-out infinite;
+    }
+
+    .global-spread {
+      animation: spread-global 4s ease-out infinite;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+
+  <!-- Particle field -->
+  <g class="particle-field" opacity="0.15">
+    <circle cx="150" cy="200" r="2" fill="#6366f1">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="150" r="1.5" fill="#818cf8">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    <circle cx="750" cy="180" r="2" fill="#6366f1">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+    <circle cx="1050" cy="220" r="1.5" fill="#818cf8">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="4.5s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+    <circle cx="300" cy="450" r="2" fill="#14b8a6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="2s"/>
+    </circle>
+    <circle cx="600" cy="480" r="1.5" fill="#2dd4bf">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite" begin="2.5s"/>
+    </circle>
+    <circle cx="900" cy="420" r="2" fill="#14b8a6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" repeatCount="indefinite" begin="3s"/>
+    </circle>
+  </g>
+
+  <!-- Central origin node (origin server/GitHub) -->
+  <g>
+    <circle cx="600" cy="315" r="60" fill="url(#glow-gradient)" opacity="0.3"/>
+    <circle cx="600" cy="315" r="40" fill="url(#node-gradient)" opacity="0.6" filter="url(#glow)"/>
+    <circle class="edge-node" cx="600" cy="315" r="25" fill="#6366f1" filter="url(#glow)" style="animation-delay: 0s"/>
+
+    <!-- Radiating rings -->
+    <circle cx="600" cy="315" r="30" fill="none" stroke="#6366f1" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="30;80" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="315" r="30" fill="none" stroke="#818cf8" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="30;80" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+      <animate attributeName="opacity" values="0.6;0" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+  </g>
+
+  <!-- Edge nodes (Cloudflare edge network) -->
+  <g class="edge-nodes">
+    <!-- Top left -->
+    <g class="edge-node" style="animation-delay: -0.5s">
+      <circle cx="250" cy="150" r="30" fill="url(#edge-gradient)" opacity="0.3"/>
+      <circle cx="250" cy="150" r="18" fill="#14b8a6" filter="url(#glow)"/>
+    </g>
+
+    <!-- Top right -->
+    <g class="edge-node" style="animation-delay: -1s">
+      <circle cx="950" cy="180" r="30" fill="url(#edge-gradient)" opacity="0.3"/>
+      <circle cx="950" cy="180" r="18" fill="#2dd4bf" filter="url(#glow)"/>
+    </g>
+
+    <!-- Left -->
+    <g class="edge-node" style="animation-delay: -1.5s">
+      <circle cx="150" cy="315" r="30" fill="url(#edge-gradient)" opacity="0.3"/>
+      <circle cx="150" cy="315" r="18" fill="#14b8a6" filter="url(#glow)"/>
+    </g>
+
+    <!-- Right -->
+    <g class="edge-node" style="animation-delay: -2s">
+      <circle cx="1050" cy="315" r="30" fill="url(#edge-gradient)" opacity="0.3"/>
+      <circle cx="1050" cy="315" r="18" fill="#2dd4bf" filter="url(#glow)"/>
+    </g>
+
+    <!-- Bottom left -->
+    <g class="edge-node" style="animation-delay: -2.5s">
+      <circle cx="300" cy="480" r="30" fill="url(#edge-gradient)" opacity="0.3"/>
+      <circle cx="300" cy="480" r="18" fill="#14b8a6" filter="url(#glow)"/>
+    </g>
+
+    <!-- Bottom right -->
+    <g class="edge-node" style="animation-delay: -3s">
+      <circle cx="900" cy="450" r="30" fill="url(#edge-gradient)" opacity="0.3"/>
+      <circle cx="900" cy="450" r="18" fill="#2dd4bf" filter="url(#glow)"/>
+    </g>
+  </g>
+
+  <!-- Distributed connections -->
+  <g class="connections" opacity="0.25">
+    <line x1="600" y1="315" x2="250" y2="150" stroke="url(#edge-gradient)" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite"/>
+    </line>
+    <line x1="600" y1="315" x2="950" y2="180" stroke="url(#edge-gradient)" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+    </line>
+    <line x1="600" y1="315" x2="150" y2="315" stroke="url(#edge-gradient)" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite" begin="1s"/>
+    </line>
+    <line x1="600" y1="315" x2="1050" y2="315" stroke="url(#edge-gradient)" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </line>
+    <line x1="600" y1="315" x2="300" y2="480" stroke="url(#edge-gradient)" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite" begin="2s"/>
+    </line>
+    <line x1="600" y1="315" x2="900" y2="450" stroke="url(#edge-gradient)" stroke-width="2" stroke-dasharray="8 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="24" dur="3s" repeatCount="indefinite" begin="2.5s"/>
+    </line>
+  </g>
+
+  <!-- Edge mesh network -->
+  <g opacity="0.1">
+    <line x1="250" y1="150" x2="950" y2="180" stroke="#14b8a6" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="150" y1="315" x2="1050" y2="315" stroke="#14b8a6" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="300" y1="480" x2="900" y2="450" stroke="#14b8a6" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="250" y1="150" x2="150" y2="315" stroke="#2dd4bf" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="950" y1="180" x2="1050" y2="315" stroke="#2dd4bf" stroke-width="1" stroke-dasharray="3 3"/>
+  </g>
+
+  <!-- Floating particles spreading globally -->
+  <g class="particles">
+    <circle class="particle" cx="600" cy="315" r="4" fill="#6366f1" opacity="0.8" style="animation-delay: 0s; animation-duration: 8s"/>
+    <circle class="particle" cx="600" cy="315" r="3" fill="#818cf8" opacity="0.7" style="animation-delay: 2s; animation-duration: 10s"/>
+    <circle class="particle" cx="600" cy="315" r="4" fill="#14b8a6" opacity="0.8" style="animation-delay: 4s; animation-duration: 9s"/>
+    <circle class="particle" cx="600" cy="315" r="3" fill="#2dd4bf" opacity="0.7" style="animation-delay: 6s; animation-duration: 11s"/>
+  </g>
+
+  <!-- Wave patterns suggesting global reach -->
+  <g opacity="0.15">
+    <path d="M0,250 Q300,230 600,250 T1200,250" stroke="#6366f1" stroke-width="2" fill="none">
+      <animate attributeName="d"
+        values="M0,250 Q300,230 600,250 T1200,250;
+                M0,250 Q300,270 600,250 T1200,250;
+                M0,250 Q300,230 600,250 T1200,250"
+        dur="8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0,380 Q300,360 600,380 T1200,380" stroke="#14b8a6" stroke-width="2" fill="none">
+      <animate attributeName="d"
+        values="M0,380 Q300,360 600,380 T1200,380;
+                M0,380 Q300,400 600,380 T1200,380;
+                M0,380 Q300,360 600,380 T1200,380"
+        dur="10s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Global spread effect -->
+  <g>
+    <circle cx="600" cy="315" r="50" fill="none" stroke="#6366f1" stroke-width="3" opacity="0" class="global-spread" style="animation-delay: 0s"/>
+    <circle cx="600" cy="315" r="50" fill="none" stroke="#14b8a6" stroke-width="3" opacity="0" class="global-spread" style="animation-delay: 2s"/>
+  </g>
+
+  <!-- Ambient glows around edge nodes -->
+  <circle cx="250" cy="150" r="80" fill="#14b8a6" opacity="0.02">
+    <animate attributeName="opacity" values="0.02;0.06;0.02" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="950" cy="180" r="80" fill="#2dd4bf" opacity="0.02">
+    <animate attributeName="opacity" values="0.02;0.06;0.02" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="600" cy="315" r="120" fill="#6366f1" opacity="0.02">
+    <animate attributeName="opacity" values="0.02;0.08;0.02" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="480" r="70" fill="#14b8a6" opacity="0.02">
+    <animate attributeName="opacity" values="0.02;0.05;0.02" dur="6.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>
