@@ -1,0 +1,29 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/blog/getting-started', label: 'Blog' },
+];
+---
+
+<header class="bg-white shadow-md">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold text-blue-600 hover:text-blue-700">
+        Serverless Site
+      </a>
+      <ul class="flex space-x-6">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>

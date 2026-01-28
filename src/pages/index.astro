@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home - Serverless Website">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold text-gray-900 mb-4">
+        Welcome to Your Serverless Website
+      </h1>
+      <p class="text-xl text-gray-600">
+        Built with Astro, deployed on Cloudflare Pages, powered by GitHub Actions
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="text-3xl mb-4">⚡</div>
+        <h2 class="text-2xl font-semibold mb-2">Lightning Fast</h2>
+        <p class="text-gray-600">
+          Astro generates static HTML for optimal performance and SEO.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="text-3xl mb-4">🌐</div>
+        <h2 class="text-2xl font-semibold mb-2">Global CDN</h2>
+        <p class="text-gray-600">
+          Cloudflare Pages deploys your site to a global network for fast access anywhere.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="text-3xl mb-4">🔄</div>
+        <h2 class="text-2xl font-semibold mb-2">Auto Deploy</h2>
+        <p class="text-gray-600">
+          GitHub Actions automatically builds and deploys on every push.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
+      <ol class="list-decimal list-inside space-y-2 text-gray-700">
+        <li>Clone this repository</li>
+        <li>Run <code class="bg-gray-200 px-2 py-1 rounded">npm install</code></li>
+        <li>Start development with <code class="bg-gray-200 px-2 py-1 rounded">npm run dev</code></li>
+        <li>Build for production with <code class="bg-gray-200 px-2 py-1 rounded">npm run build</code></li>
+        <li>Deploy to Cloudflare Pages via GitHub Actions</li>
+      </ol>
+    </div>
+
+    <div class="text-center">
+      <a
+        href="/about"
+        class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+      >
+        Learn More
+      </a>
+    </div>
+  </div>
+</Layout>

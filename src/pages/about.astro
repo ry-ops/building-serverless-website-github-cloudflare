@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About - Serverless Website"
+  description="Learn about building serverless websites with Astro and Cloudflare Pages"
+>
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">About This Project</h1>
+
+    <div class="prose prose-lg max-w-none">
+      <p class="text-xl text-gray-600 mb-8">
+        This project demonstrates how to build and deploy a modern serverless website
+        using cutting-edge web technologies.
+      </p>
+
+      <section class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Technology Stack</h2>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+          <h3 class="text-2xl font-semibold mb-2">Astro</h3>
+          <p class="text-gray-700">
+            A modern web framework that delivers lightning-fast performance by shipping
+            zero JavaScript by default. Astro is perfect for content-focused websites
+            like blogs, documentation sites, and marketing pages.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+          <h3 class="text-2xl font-semibold mb-2">Tailwind CSS</h3>
+          <p class="text-gray-700">
+            A utility-first CSS framework that enables rapid UI development with
+            pre-built classes. No need to write custom CSS for common patterns.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+          <h3 class="text-2xl font-semibold mb-2">Cloudflare Pages</h3>
+          <p class="text-gray-700">
+            A JAMstack platform for deploying static sites and serverless functions
+            to Cloudflare's global network. Get automatic SSL, DDoS protection, and
+            incredible performance.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-2xl font-semibold mb-2">GitHub Actions</h3>
+          <p class="text-gray-700">
+            Automated CI/CD workflows that build and deploy your site on every push.
+            No manual deployment steps required.
+          </p>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Static site generation for optimal performance</li>
+          <li>Component-based architecture for reusability</li>
+          <li>Dynamic routing for blog posts</li>
+          <li>Automatic deployment pipeline</li>
+          <li>TypeScript support for type safety</li>
+          <li>Responsive design with Tailwind CSS</li>
+          <li>SEO-friendly HTML output</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Serverless?</h2>
+        <p class="text-gray-700 mb-4">
+          Serverless architectures eliminate the need to manage servers, allowing you
+          to focus on building features instead of infrastructure. Benefits include:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Zero server maintenance</li>
+          <li>Automatic scaling</li>
+          <li>Pay only for what you use</li>
+          <li>Global distribution by default</li>
+          <li>Built-in security and DDoS protection</li>
+        </ul>
+      </section>
+
+      <div class="bg-green-50 border-l-4 border-green-600 p-6 mt-8">
+        <p class="text-lg text-gray-800">
+          Ready to get started? Check out the
+          <a href="/blog/getting-started" class="text-blue-600 hover:underline">Getting Started</a>
+          guide or explore the
+          <a href="https://github.com/ry-ops/building-serverless-website-github-cloudflare" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+            GitHub repository
+          </a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

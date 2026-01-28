@@ -1,0 +1,36 @@
+{
+  "name": "building-serverless-website-github-cloudflare",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A serverless website built with Astro, GitHub Actions, and Cloudflare Pages",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.2",
+    "astro": "^4.16.14",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5"
+  },
+  "keywords": [
+    "astro",
+    "cloudflare-pages",
+    "serverless",
+    "tailwind",
+    "github-actions"
+  ],
+  "author": "ry-ops",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ry-ops/building-serverless-website-github-cloudflare.git"
+  }
+}
