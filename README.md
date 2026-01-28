@@ -1,5 +1,9 @@
 # Building a Serverless Website with GitHub and Cloudflare
 
+<p align="center">
+  <img src="hero.svg" alt="Building a Serverless Website with GitHub and Cloudflare" width="100%">
+</p>
+
 A complete example of building and deploying a modern serverless website using Astro, GitHub Actions, and Cloudflare Pages.
 
 ## Quick Start
