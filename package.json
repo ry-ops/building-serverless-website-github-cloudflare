@@ -1,7 +1,7 @@
 {
   "name": "building-serverless-website-github-cloudflare",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A serverless website built with Astro, GitHub Actions, and Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.14",
+    "astro": "^5.15.9",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   },
