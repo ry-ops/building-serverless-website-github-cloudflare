@@ -32,5 +32,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ry-ops/building-serverless-website-github-cloudflare.git"
+  },
+  "overrides": {
+    "lodash": "4.17.23"
   }
 }
