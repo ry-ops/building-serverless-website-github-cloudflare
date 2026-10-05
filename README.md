@@ -60,6 +60,11 @@ git commit -am "Ship it" && git push origin main
 
 ## How it's laid out
 
+<p align="center">
+  <img src="anatomy.svg" width="100%" alt="A Layout wraps every page with a shared Header and Footer; the page slot cycles through index, about and the dynamic blog/[slug] route. Astro ships zero JS by default.">
+</p>
+
+
 ```
 src/
 ├── components/   Header.astro · Footer.astro
