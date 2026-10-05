@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-labelledby="t d">
+  <title id="t">How the Astro site is composed</title>
+  <desc id="d">A Layout wraps every page: a shared Header at the top, a Footer at the bottom, and the page content in between. The pages cycle through index.astro (Home), about.astro (About) and the dynamic blog/[slug].astro route (a blog post). Components live in src/components, the layout in src/layouts, pages in src/pages.</desc>
+  <defs><linearGradient id="t2" x1="0" x2="1"><stop offset="0" stop-color="#ff5d01"/><stop offset="1" stop-color="#ffb02e"/></linearGradient></defs>
+  <style>
+    text { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; fill:#e6ebf5; }
+    .muted { fill:#8b96ad; } .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    @keyframes pg0 { 0%,0.00% { opacity:0; transform:translateY(8px); } 3.33%,30.00% { opacity:1; transform:translateY(0); } 33.33%,100% { opacity:0; } } .pg0 { animation:pg0 9.0s infinite; }
+    @keyframes pg1 { 0%,33.33% { opacity:0; transform:translateY(8px); } 36.67%,63.33% { opacity:1; transform:translateY(0); } 66.67%,100% { opacity:0; } } .pg1 { animation:pg1 9.0s infinite; }
+    @keyframes pg2 { 0%,66.67% { opacity:0; transform:translateY(8px); } 70.00%,96.67% { opacity:1; transform:translateY(0); } 100.00%,100% { opacity:0; } } .pg2 { animation:pg2 9.0s infinite; }
+    @media (prefers-reduced-motion: reduce) { .pg1,.pg2 { display:none; } .pg0 { animation:none; opacity:1; } }
+  </style>
+  <rect width="960" height="420" rx="20" fill="#0f1420"/>
+  <text x="40" y="54" font-size="26" font-weight="800">One Layout, every page</text>
+  <text x="40" y="80" font-size="15" class="muted">A shared shell wraps the content, so Header and Footer are written once.</text>
+
+  <!-- Layout shell -->
+  <rect x="320" y="104" width="320" height="276" rx="14" fill="none" stroke="url(#t2)" stroke-width="2.5"/>
+  <text x="332" y="124" font-size="11" font-weight="700" style="fill:#ffb02e">Layout.astro</text>
+  <!-- header -->
+  <rect x="340" y="134" width="280" height="40" rx="8" fill="#161d2b" stroke="#2c3750"/>
+  <text x="356" y="159" font-size="13" font-weight="700">Header</text>
+  <text x="604" y="159" text-anchor="end" font-size="10" class="mono muted">components/</text>
+  <!-- page slot -->
+  <rect x="340" y="184" width="280" height="148" rx="8" fill="#10151f" stroke="#2c3750" stroke-dasharray="4 4"/>
+  <text x="356" y="202" font-size="10" class="mono muted">&lt;slot /&gt; — the page</text>
+  <g class="pg0">
+      <text x="480" y="232" text-anchor="middle" font-size="22" font-weight="800">Home</text>
+      <text x="480" y="258" text-anchor="middle" font-size="12" class="mono muted">src/pages/index.astro</text>
+      <rect x="360" y="276" width="240" height="8" rx="4" fill="#2c3750"/>
+      <rect x="360" y="292" width="200" height="8" rx="4" fill="#2c3750"/>
+      <rect x="360" y="308" width="220" height="8" rx="4" fill="#2c3750"/>
+    </g><g class="pg1">
+      <text x="480" y="232" text-anchor="middle" font-size="22" font-weight="800">About</text>
+      <text x="480" y="258" text-anchor="middle" font-size="12" class="mono muted">src/pages/about.astro</text>
+      <rect x="360" y="276" width="240" height="8" rx="4" fill="#2c3750"/>
+      <rect x="360" y="292" width="200" height="8" rx="4" fill="#2c3750"/>
+      <rect x="360" y="308" width="220" height="8" rx="4" fill="#2c3750"/>
+    </g><g class="pg2">
+      <text x="480" y="232" text-anchor="middle" font-size="22" font-weight="800">A blog post</text>
+      <text x="480" y="258" text-anchor="middle" font-size="12" class="mono muted">src/pages/blog/[slug].astro</text>
+      <rect x="360" y="276" width="240" height="8" rx="4" fill="#2c3750"/>
+      <rect x="360" y="292" width="200" height="8" rx="4" fill="#2c3750"/>
+      <rect x="360" y="308" width="220" height="8" rx="4" fill="#2c3750"/>
+    </g>
+  <!-- footer -->
+  <rect x="340" y="342" width="280" height="30" rx="8" fill="#161d2b" stroke="#2c3750"/>
+  <text x="356" y="362" font-size="13" font-weight="700">Footer</text>
+
+  <!-- left labels -->
+  <text x="60" y="150" font-size="13" font-weight="700">src/components/</text>
+  <text x="60" y="170" font-size="12" class="mono muted">Header.astro</text>
+  <text x="60" y="188" font-size="12" class="mono muted">Footer.astro</text>
+  <text x="60" y="226" font-size="13" font-weight="700">src/layouts/</text>
+  <text x="60" y="246" font-size="12" class="mono muted">Layout.astro</text>
+  <text x="60" y="284" font-size="13" font-weight="700">src/pages/</text>
+  <text x="60" y="304" font-size="12" class="mono muted">index · about</text>
+  <text x="60" y="322" font-size="12" class="mono muted">blog/[slug]</text>
+
+  <!-- right note -->
+  <text x="700" y="150" font-size="13" font-weight="700" style="fill:#ff5d01">Astro</text>
+  <text x="700" y="172" font-size="12" class="muted">ships zero JS</text>
+  <text x="700" y="190" font-size="12" class="muted">by default —</text>
+  <text x="700" y="208" font-size="12" class="muted">static HTML,</text>
+  <text x="700" y="226" font-size="12" class="muted">fast everywhere.</text>
+  <text x="700" y="268" font-size="13" font-weight="700" style="fill:#ffb02e">[slug]</text>
+  <text x="700" y="290" font-size="12" class="muted">one file renders</text>
+  <text x="700" y="308" font-size="12" class="muted">every blog post.</text>
+</svg>

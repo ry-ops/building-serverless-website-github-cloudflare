@@ -1,128 +1,91 @@
-# Building a Serverless Website with GitHub and Cloudflare
-
 <p align="center">
-  <img src="hero.svg" alt="Building a Serverless Website with GitHub and Cloudflare" width="100%">
+  <img src="hero.svg" width="100%" alt="A push to main triggers GitHub Actions, which runs astro build, deploys dist/ to Cloudflare Pages, and the site goes live on the edge.">
 </p>
 
-A complete example of building and deploying a modern serverless website using Astro, GitHub Actions, and Cloudflare Pages.
+<h1 align="center">Building a Serverless Website</h1>
 
-## Quick Start
+<p align="center"><b>Astro + GitHub Actions + Cloudflare Pages.</b> A complete, working example: push to <code>main</code> and your site builds and deploys itself to Cloudflare's global edge, for free.</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Astro-6-ff5d01" alt="Astro 6">
+  <img src="https://img.shields.io/badge/Tailwind-CSS-38bdf8" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Cloudflare-Pages-f6821f" alt="Cloudflare Pages">
+  <img src="https://img.shields.io/badge/TypeScript-strict-3178c6" alt="TypeScript">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-8b96ad" alt="MIT"></a>
+</p>
+
+---
+
+## What you get
+
+A small but real site you can clone and ship today:
+
+- ⚡ **Astro 6** — ships zero JavaScript by default, so pages are fast.
+- 🎨 **Tailwind CSS** — styling without leaving your markup.
+- ✍️ **A blog** — dynamic routes via `src/pages/blog/[slug].astro`.
+- 🧩 **Components** — a shared `Header`, `Footer` and `Layout`.
+- 🔒 **TypeScript** — `astro check` runs on every build.
+- 🚀 **Automatic deploys** — GitHub Actions builds and pushes to Cloudflare Pages on every push to `main`.
+
+## Quick start
 
 ```bash
-# Clone the repository
 git clone https://github.com/ry-ops/building-serverless-website-github-cloudflare.git
 cd building-serverless-website-github-cloudflare
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-Visit `http://localhost:4321` to see your site.
+Open **http://localhost:4321**.
 
-## Features
+| Command | What it does |
+|---|---|
+| `npm run dev` | Dev server with hot reload |
+| `npm run build` | `astro check` then `astro build` → `dist/` |
+| `npm run preview` | Serve the production build locally |
 
-- **Astro Framework** - Fast, modern static site generator
-- **Tailwind CSS** - Utility-first CSS framework
-- **Blog Support** - Dynamic blog routes with markdown support
-- **Cloudflare Pages** - Automatic deployment via GitHub Actions
-- **TypeScript** - Type-safe development experience
-- **Component-Based** - Reusable header, footer, and layout components
+## Deploy it
 
-## Project Structure
+**1. Create a Cloudflare Pages project** connected to your fork (Cloudflare Dashboard → Workers & Pages → Create → Pages). Build command `npm run build`, output directory `dist`.
 
-```
-/
-├── src/
-│   ├── components/
-│   │   ├── Header.astro
-│   │   └── Footer.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       ├── index.astro
-│       ├── about.astro
-│       └── blog/
-│           └── [slug].astro
-├── examples/
-│   ├── blog-setup/
-│   └── api-routes/
-├── documentation/
-│   ├── DEPLOYMENT.md
-│   ├── ASTRO-GUIDE.md
-│   └── CLOUDFLARE-SETUP.md
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-└── package.json
-```
+**2. Add two GitHub secrets** (Settings → Secrets and variables → Actions):
+- `CLOUDFLARE_API_TOKEN` — a token with the **Cloudflare Pages: Edit** permission
+- `CLOUDFLARE_ACCOUNT_ID` — from any zone's Overview page
 
-## Deployment Steps
-
-### 1. Setup Cloudflare Pages
-
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Navigate to Pages
-3. Create a new project connected to your GitHub repository
-4. Configure build settings:
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-
-### 2. Configure GitHub Secrets
-
-Add the following secrets to your GitHub repository:
-
-- `CLOUDFLARE_API_TOKEN` - Your Cloudflare API token
-- `CLOUDFLARE_ACCOUNT_ID` - Your Cloudflare account ID
-
-### 3. Deploy
-
-Push to the `main` branch, and GitHub Actions will automatically build and deploy your site.
+**3. Push to `main`.** [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) checks out, `npm ci`, `npm run build`, and deploys `dist/` with `cloudflare/pages-action`.
 
 ```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
+git commit -am "Ship it" && git push origin main
 ```
 
-## Development
+## How it's laid out
 
-```bash
-# Start dev server
-npm run dev
+<p align="center">
+  <img src="anatomy.svg" width="100%" alt="A Layout wraps every page with a shared Header and Footer; the page slot cycles through index, about and the dynamic blog/[slug] route. Astro ships zero JS by default.">
+</p>
 
-# Build for production
-npm run build
 
-# Preview production build
-npm run preview
+```
+src/
+├── components/   Header.astro · Footer.astro
+├── layouts/      Layout.astro
+└── pages/        index.astro · about.astro · blog/[slug].astro
+.github/workflows/deploy.yml   build + deploy to Cloudflare Pages
+astro.config.mjs · tailwind.config.mjs
 ```
 
-## Documentation
+## Learn more
 
-- [Deployment Guide](documentation/DEPLOYMENT.md) - Complete deployment instructions
-- [Astro Guide](documentation/ASTRO-GUIDE.md) - Working with Astro framework
-- [Cloudflare Setup](documentation/CLOUDFLARE-SETUP.md) - Cloudflare Pages configuration
+Three guides walk through the pieces:
+- [DEPLOYMENT.md](documentation/DEPLOYMENT.md) — the full deploy path
+- [ASTRO-GUIDE.md](documentation/ASTRO-GUIDE.md) — working with Astro
+- [CLOUDFLARE-SETUP.md](documentation/CLOUDFLARE-SETUP.md) — Cloudflare Pages
 
-## Examples
-
-- [Blog Setup](examples/blog-setup/) - Example blog configuration
-- [API Routes](examples/api-routes/) - Serverless API route examples
-
-## Tech Stack
-
-- [Astro](https://astro.build/) - Web framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [Cloudflare Pages](https://pages.cloudflare.com/) - Hosting platform
-- [GitHub Actions](https://github.com/features/actions) - CI/CD pipeline
+And two worked examples: a [blog setup](examples/blog-setup/) and [API routes](examples/api-routes/).
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details
-
-Copyright (c) 2026 ry-ops
+MIT. See [LICENSE](LICENSE).
 
 <!-- org-footer -->
 ---
