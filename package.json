@@ -12,13 +12,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.2",
-    "@astrojs/tailwind": "^5.1.2",
     "astro": "^6.1.10",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.5",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.29"
   },
   "keywords": [
     "astro",
